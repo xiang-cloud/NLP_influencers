@@ -5,7 +5,7 @@ from googleapiclient.errors import HttpError
 from youtube_transcript_api import YouTubeTranscriptApi,TranscriptsDisabled,NoTranscriptFound
 
 # Set up API credentials
-API_KEY = 'AIzaSyBcRAIrp45w0a5HZjPutrLoEjh-_D75o70'
+API_KEY = '###'
 
 # Set up API client
 youtube = build('youtube', 'v3', developerKey=API_KEY)
