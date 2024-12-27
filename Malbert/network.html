@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "YouTuber", "label": "YouTuber", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "agoney", "label": "agoney", "shape": "dot", "size": 11.3780260707635}, {"color": "#97c2fc", "id": "aitana", "label": "aitana", "shape": "dot", "size": 16.21973929236499}, {"color": "#97c2fc", "id": "alba", "label": "alba", "shape": "dot", "size": 10.968342644320298}, {"color": "#97c2fc", "id": "alfred", "label": "alfred", "shape": "dot", "size": 13.985102420856611}, {"color": "#97c2fc", "id": "amaia", "label": "amaia", "shape": "dot", "size": 11.415270018621975}, {"color": "#97c2fc", "id": "amaya", "label": "amaya", "shape": "dot", "size": 12.197392923649907}, {"color": "#97c2fc", "id": "ana", "label": "ana", "shape": "dot", "size": 11.042830540037244}, {"color": "#97c2fc", "id": "anabel pantoja", "label": "anabel pantoja", "shape": "dot", "size": 11.191806331471136}, {"color": "#97c2fc", "id": "angela", "label": "angela", "shape": "dot", "size": 10.931098696461826}, {"color": "#97c2fc", "id": "ariadna", "label": "ariadna", "shape": "dot", "size": 10.893854748603353}, {"color": "#97c2fc", "id": "bruno", "label": "bruno", "shape": "dot", "size": 11.3780260707635}, {"color": "#97c2fc", "id": "cepeda", "label": "cepeda", "shape": "dot", "size": 18.86405959031657}, {"color": "#97c2fc", "id": "chanel", "label": "chanel", "shape": "dot", "size": 10.931098696461826}, {"color": "#97c2fc", "id": "djmario", "label": "djmario", "shape": "dot", "size": 10.0}, {"color": "#97c2fc", "id": "flavio", "label": "flavio", "shape": "dot", "size": 10.968342644320298}, {"color": "#97c2fc", "id": "hugo", "label": "hugo", "shape": "dot", "size": 10.782122905027933}, {"color": "#97c2fc", "id": "ibai", "label": "ibai", "shape": "dot", "size": 10.074487895716945}, {"color": "#97c2fc", "id": "jes\u00fas", "label": "jes\u00fas", "shape": "dot", "size": 10.819366852886406}, {"color": "#97c2fc", "id": "juan antonio", "label": "juan antonio", "shape": "dot", "size": 11.86219739292365}, {"color": "#97c2fc", "id": "julia", "label": "julia", "shape": "dot", "size": 11.824953445065177}, {"color": "#97c2fc", "id": "kiko matamoros", "label": "kiko matamoros", "shape": "dot", "size": 10.968342644320298}, {"color": "#97c2fc", "id": "maite", "label": "maite", "shape": "dot", "size": 10.74487895716946}, {"color": "#97c2fc", "id": "malbert", "label": "malbert", "shape": "dot", "size": 50.0}, {"color": "#97c2fc", "id": "marilia", "label": "marilia", "shape": "dot", "size": 11.675977653631286}, {"color": "#97c2fc", "id": "marina", "label": "marina", "shape": "dot", "size": 11.11731843575419}, {"color": "#97c2fc", "id": "marta", "label": "marta", "shape": "dot", "size": 11.3780260707635}, {"color": "#97c2fc", "id": "marta d\u00edaz", "label": "marta d\u00edaz", "shape": "dot", "size": 10.037243947858473}, {"color": "#97c2fc", "id": "marta l\u00f3pez", "label": "marta l\u00f3pez", "shape": "dot", "size": 10.968342644320298}, {"color": "#97c2fc", "id": "mar\u00eda", "label": "mar\u00eda", "shape": "dot", "size": 12.383612662942273}, {"color": "#97c2fc", "id": "mickey", "label": "mickey", "shape": "dot", "size": 11.303538175046555}, {"color": "#97c2fc", "id": "miriam", "label": "miriam", "shape": "dot", "size": 12.60707635009311}, {"color": "#97c2fc", "id": "m\u00f3nica naranjo", "label": "m\u00f3nica naranjo", "shape": "dot", "size": 10.968342644320298}, {"color": "#97c2fc", "id": "natalia", "label": "natalia", "shape": "dot", "size": 13.054003724394786}, {"color": "#97c2fc", "id": "nevera", "label": "nevera", "shape": "dot", "size": 10.856610800744878}, {"color": "#97c2fc", "id": "noelia", "label": "noelia", "shape": "dot", "size": 10.968342644320298}, {"color": "#97c2fc", "id": "rafa", "label": "rafa", "shape": "dot", "size": 11.080074487895716}, {"color": "#97c2fc", "id": "ra\u00fal", "label": "ra\u00fal", "shape": "dot", "size": 11.750465549348231}, {"color": "#97c2fc", "id": "ricky", "label": "ricky", "shape": "dot", "size": 11.303538175046555}, {"color": "#97c2fc", "id": "samantha", "label": "samantha", "shape": "dot", "size": 11.527001862197393}, {"color": "#97c2fc", "id": "tamara gorro", "label": "tamara gorro", "shape": "dot", "size": 10.74487895716946}, {"color": "#97c2fc", "id": "vegetta", "label": "vegetta", "shape": "dot", "size": 10.074487895716945}]);
+                  edges = new vis.DataSet([{"from": "YouTuber", "to": "agoney", "width": 1.7338709677419355}, {"from": "YouTuber", "to": "aitana", "width": 5.0}, {"from": "YouTuber", "to": "alba", "width": 0.935483870967742}, {"from": "YouTuber", "to": "alfred", "width": 5.0}, {"from": "YouTuber", "to": "amaia", "width": 1.806451612903226}, {"from": "YouTuber", "to": "amaya", "width": 3.330645161290323}, {"from": "YouTuber", "to": "ana", "width": 1.0806451612903225}, {"from": "YouTuber", "to": "anabel pantoja", "width": 1.370967741935484}, {"from": "YouTuber", "to": "angela", "width": 0.8629032258064516}, {"from": "YouTuber", "to": "ariadna", "width": 0.7903225806451613}, {"from": "YouTuber", "to": "bruno", "width": 1.7338709677419355}, {"from": "YouTuber", "to": "cepeda", "width": 5.0}, {"from": "YouTuber", "to": "chanel", "width": 0.8629032258064516}, {"from": "YouTuber", "to": "djmario", "width": 0.5}, {"from": "YouTuber", "to": "flavio", "width": 0.935483870967742}, {"from": "YouTuber", "to": "hugo", "width": 0.5725806451612904}, {"from": "YouTuber", "to": "ibai", "width": 0.5}, {"from": "YouTuber", "to": "jes\u00fas", "width": 0.6451612903225806}, {"from": "YouTuber", "to": "juan antonio", "width": 2.67741935483871}, {"from": "YouTuber", "to": "julia", "width": 2.6048387096774195}, {"from": "YouTuber", "to": "kiko matamoros", "width": 0.935483870967742}, {"from": "YouTuber", "to": "maite", "width": 0.5}, {"from": "YouTuber", "to": "malbert", "width": 5.0}, {"from": "YouTuber", "to": "marilia", "width": 2.314516129032258}, {"from": "YouTuber", "to": "marina", "width": 1.2258064516129032}, {"from": "YouTuber", "to": "marta", "width": 1.7338709677419355}, {"from": "YouTuber", "to": "marta d\u00edaz", "width": 0.5}, {"from": "YouTuber", "to": "marta l\u00f3pez", "width": 0.935483870967742}, {"from": "YouTuber", "to": "mar\u00eda", "width": 3.6935483870967745}, {"from": "YouTuber", "to": "mickey", "width": 1.588709677419355}, {"from": "YouTuber", "to": "miriam", "width": 4.129032258064516}, {"from": "YouTuber", "to": "m\u00f3nica naranjo", "width": 0.935483870967742}, {"from": "YouTuber", "to": "natalia", "width": 5.0}, {"from": "YouTuber", "to": "nevera", "width": 0.717741935483871}, {"from": "YouTuber", "to": "noelia", "width": 0.935483870967742}, {"from": "YouTuber", "to": "rafa", "width": 1.153225806451613}, {"from": "YouTuber", "to": "ra\u00fal", "width": 2.459677419354839}, {"from": "YouTuber", "to": "ricky", "width": 1.588709677419355}, {"from": "YouTuber", "to": "samantha", "width": 2.024193548387097}, {"from": "YouTuber", "to": "tamara gorro", "width": 0.5}, {"from": "YouTuber", "to": "vegetta", "width": 0.5}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
