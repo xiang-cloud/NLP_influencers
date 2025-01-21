@@ -1,8 +1,20 @@
-# NLP Influencers Network Analysis
+# NLP Influencers Network Analysis 🌐
 
-Analyze YouTube influencer networks and content using NLP techniques. Extract video data, analyze relationships, and generate insights from Spanish-speaking influencers' content.
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![YouTube](https://img.shields.io/badge/YouTube-API-red.svg)](https://developers.google.com/youtube/v3)
+[![Pandas](https://img.shields.io/badge/Pandas-2.1.3-150458.svg)](https://pandas.pydata.org/)
+[![Spacy](https://img.shields.io/badge/SpaCy-3.7.2-09A3D5.svg)](https://spacy.io/)
+[![NLTK](https://img.shields.io/badge/NLTK-3.8.1-147814.svg)](https://www.nltk.org/)
+[![Gensim](https://img.shields.io/badge/Gensim-4.3.2-FF6F61.svg)](https://radimrehurek.com/gensim/)
+[![Flair](https://img.shields.io/badge/Flair-0.13.0-orange.svg)](https://github.com/flairNLP/flair)
+[![NetworkX](https://img.shields.io/badge/NetworkX-3.2.1-yellow.svg)](https://networkx.org/)
+[![Plotly](https://img.shields.io/badge/Plotly-5.18.0-3F4F75.svg)](https://plotly.com/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3.2-F7931E.svg)](https://scikit-learn.org/)
 
-## Quick Start
+Analyze YouTube influencer networks and content using NLP techniques. Extract video data, analyze relationships, and generate insights from Spanish-speaking influencers' content. 🎥 👥
+
+## 🚀 Quick Start
 
 ```bash
 # Clone the repository
@@ -21,14 +33,14 @@ python ETL_video_1.py
 python Comments_extraction.py
 ```
 
-## Overview
+## 📋 Overview
 
 This project analyzes Spanish-speaking YouTube influencers through:
-- Content analysis using NLP
-- Network relationship mapping
-- Engagement metrics analysis
-- Named Entity Recognition for person mentions
-- Interactive visualizations
+- 🔍 Content analysis using NLP
+- 🕸️ Network relationship mapping
+- 📊 Engagement metrics analysis
+- 👥 Named Entity Recognition for person mentions
+- 📈 Interactive visualizations
 
 ## Project Structure
 
@@ -94,9 +106,9 @@ This project analyzes Spanish-speaking YouTube influencers through:
 └── memoria_TFM_versionfinal.pdf    # Detailed project documentation
 ```
 
-## Analysis Pipeline
+## 🔄 Analysis Pipeline
 
-1. **Data Collection & ETL**
+1. **Data Collection & ETL** 📥
    - Extract video metadata using YouTube API (`ETL_video_1.py`)
      - Video titles, descriptions, statistics
      - View counts, likes, comments
@@ -106,7 +118,7 @@ This project analyzes Spanish-speaking YouTube influencers through:
      - Comment statistics
      - User interaction data
 
-2. **Exploratory Data Analysis**
+2. **Exploratory Data Analysis** 📊
    - Per-influencer analysis (`EDA_[influencer].ipynb`)
      - Posting patterns and frequency
      - Engagement metrics analysis
@@ -117,7 +129,7 @@ This project analyzes Spanish-speaking YouTube influencers through:
      - Outlier detection
      - Data validation
 
-3. **Text Processing & NLP**
+3. **Text Processing & NLP** 📝
    - Text preprocessing (`preprocessing_text.ipynb`)
      - Tokenization and normalization
      - Stop word removal
@@ -133,7 +145,7 @@ This project analyzes Spanish-speaking YouTube influencers through:
      - Keyword identification
      - Word cloud generation
 
-4. **Network Analysis**
+4. **Network Analysis** 🕸️
    - Individual Network Analysis (`network.ipynb`)
      - Per-influencer connection mapping
      - Local community detection
@@ -144,7 +156,7 @@ This project analyzes Spanish-speaking YouTube influencers through:
      - Centrality analysis
      - Influence flow mapping
 
-5. **Visualization & Reporting**
+5. **Visualization & Reporting** 📊
    - Network Visualizations
      - Basic network graphs (`network.html`)
      - Enhanced network visualization (`enhanced_network.html`)
@@ -158,40 +170,50 @@ This project analyzes Spanish-speaking YouTube influencers through:
      - Pattern identification
      - Insight generation
 
-## Key Features
+## ⭐ Key Features
 
-- **Content Analysis**
+- **Content Analysis** 📝
   - Multi-language support (ES/EN)
   - Topic modeling
   - Person mention detection
   - Temporal patterns
 
-- **Network Analysis**
+- **Network Analysis** 🕸️
   - Relationship mapping
   - Community detection
   - Influence measurement
 
-- **Visualization**
+- **Visualization** 📊
   - Interactive networks
   - Word clouds
   - Engagement metrics
 
-## Requirements
+## 🛠️ Requirements
 
 See `requirements.txt` for full list of dependencies.
 
 Main requirements:
-- Python 3.x
-- YouTube Data API credentials
-- 2GB+ RAM for NLP processing
+- Python 3.8+ 🐍
+- YouTube Data API credentials 🔑
+- 2GB+ RAM for NLP processing 💻
 
-## Data Files
+Key Dependencies:
+- **Core**: `numpy`, `pandas`, `jupyter`
+- **NLP**: `spacy`, `flair`, `nltk`, `gensim`
+  - Spanish language model: `es_core_news_lg`
+  - English language model: `en_core_web_lg`
+  - NLTK data packages: `punkt`, `stopwords`, `wordnet`, `averaged_perceptron_tagger`
+- **Network**: `networkx`
+- **Visualization**: `matplotlib`, `seaborn`, `plotly`, `wordcloud`
+- **ML**: `scikit-learn`
 
-- **Input**
+## 📁 Data Files
+
+- **Input** 📥
   - YouTube API credentials
   - List of influencer channels
 
-- **Output**
+- **Output** 📤
   - **Raw Data**
     - `[influencer]_videos.csv`: Video metadata
     - `[influencer]_comments.csv`: Comment data
@@ -211,25 +233,23 @@ Main requirements:
     - `title_wordcloud.png`: Most frequent words in video titles
     - `description_wordcloud.png`: Key terms from video descriptions
     - `transcript_wordcloud.png`: Common words from video transcripts
-    - `title_preprocessed.png`: Processed title word frequencies
-    - `description_preprocessed.png`: Processed description terms
-    - `transcript_preprocessed.png`: Processed transcript analysis
-    - `all_words.png`: Combined word frequency visualization
+    - `*_preprocessed.png`: Processed versions
+    - `all_words.png`: Combined analysis
 
-## Notes
+## 📝 Notes
 
-- Data collection configured until April 1, 2023
-- Optimized for Spanish content analysis
-- Handles API rate limits automatically
-- Parallel processing support
+- ⏰ Data collection configured until April 1, 2023
+- 🇪🇸 Optimized for Spanish content analysis
+- ⚡ Handles API rate limits automatically
+- 🚀 Parallel processing support
 
-## Contributing
+## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
+1. Fork the repository 🍴
+2. Create a feature branch 🌿
+3. Submit a pull request 🎯
 
-## License
+## 📄 License
 
 MIT License
 
